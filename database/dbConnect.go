@@ -15,7 +15,7 @@ var DB *gorm.DB
 func Connect() {
 	var err error
 
-	dsn := os.Getenv("host=pg-37d27cf3-gocrudffff.b.aivencloud.com user=avnadmin password=AVNS_NzwxDhqUBLgMAO3EPhE dbname=defaultdb port=10146 sslmode=require")
+	dsn := "host=pg-37d27cf3-gocrudffff.b.aivencloud.com user=avnadmin password=AVNS_NzwxDhqUBLgMAO3EPhE dbname=defaultdb port=10146 sslmode=require"
 	// postgres://avnadmin:AVNS_NzwxDhqUBLgMAO3EPhE@pg-37d27cf3-gocrudffff.b.aivencloud.com:10146/defaultdb?sslmode=require
 	// Connect to the database
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
