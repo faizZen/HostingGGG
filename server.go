@@ -23,9 +23,6 @@ func init() {
 
 func main() {
 	port := os.Getenv("PORT")
-	if err != nil {
-		log.Println("Error loading .env file, falling back to system environment variables")
-	}
 	if port == "" {
 		port = PORT
 	}
