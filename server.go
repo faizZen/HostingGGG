@@ -15,7 +15,7 @@ import (
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
-const defaultPort = "8080"
+const PORT = "8080"
 
 func init() {
 	database.Connect()
@@ -23,8 +23,11 @@ func init() {
 
 func main() {
 	port := os.Getenv("PORT")
+	if err != nil {
+		log.Println("Error loading .env file, falling back to system environment variables")
+	}
 	if port == "" {
-		port = defaultPort
+		port = PORT
 	}
 
 	srv := handler.New(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
