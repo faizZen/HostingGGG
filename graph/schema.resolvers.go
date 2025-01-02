@@ -163,11 +163,12 @@ func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
 	// 	}
 	//   }
 	var users []*model.User
-
+	startTime := time.Now()
 	cachedUsers, found := c.Get("all_users")
 	if found {
 		users = cachedUsers.([]*model.User)
-		log.Println("[CACHE HIT] Fetched all users from cache")
+		elapsedTime := time.Since(startTime)
+		log.Println("[CACHE HIT] Fetched all users from cache %v",elapsedTime)
 		return users, nil
 	}
 
@@ -198,7 +199,7 @@ func (r *queryResolver) User(ctx context.Context, id string) (*model.User, error
 	cachedUser, found := c.Get(id)
 	if found {
 		elapsedTime := time.Since(startTime)
-		log.Printf("[CACHE HIT] User with ID: %s fetched from cache %d", id, elapsedTime)
+		log.Printf("[CACHE HIT] User with ID: %s fetched from cache %v", id, elapsedTime)
 		return cachedUser.(*model.User), nil
 	}
 
