@@ -14,10 +14,6 @@ var DB *gorm.DB
 
 func Connect() {
 	var err error
-	err = godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 
 	dsn := os.Getenv("host=pg-37d27cf3-gocrudffff.b.aivencloud.com user=avnadmin password=AVNS_NzwxDhqUBLgMAO3EPhE dbname=defaultdb port=10146 sslmode=require")
 	// postgres://avnadmin:AVNS_NzwxDhqUBLgMAO3EPhE@pg-37d27cf3-gocrudffff.b.aivencloud.com:10146/defaultdb?sslmode=require
