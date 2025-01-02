@@ -163,7 +163,6 @@ func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
 	// 	}
 	//   }
 	var users []*model.User
-	startTime := time.Now()
 	cachedUsers, found := c.Get("all_users")
 	if found {
 		users = cachedUsers.([]*model.User)
